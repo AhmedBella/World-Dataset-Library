@@ -12,9 +12,8 @@ To run the World Dataset Library application locally, you need to have the follo
 You can follow these steps to install and run the application:
 
 1. Clone this repository to your local machine.
-2. Navigate to the project directory and install the required Python packages by running the command `pip install -r requirements.txt`.
-3. Install the required Node.js packages by running the command `npm install` in the `frontend` directory.
-4. Create a new database by running the command `python manage.py migrate`.
-5. Create a superuser account by running the command `python manage.py createsuperuser` and follow the prompts to enter your desired username and password.
-6. Start the development server by running the command `python manage.py runserver`.
-7. Open your web browser and navigate to `http://localhost:8000/` to access the application.
+2. Install the required Node.js packages by running the command `npm install` in the `frontend` directory.
+3. Create a new database by running the command `python manage.py migrate`.
+4. Create a superuser account by running the command `python manage.py createsuperuser` and follow the prompts to enter your desired username and password.
+5. Start the development server by running the command `python manage.py runserver`.
+6. Open your web browser and navigate to `http://localhost:8000/` to access the application.
