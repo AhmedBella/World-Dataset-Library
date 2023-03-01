@@ -1,91 +1,54 @@
-import Image from 'next/image'
-import { Inter } from 'next/font/google'
-import styles from './page.module.css'
-
-const inter = Inter({ subsets: ['latin'] })
+import Header from "../components/Header";
+import background from "../components/images/background.png";
 
 export default function Home() {
   return (
-    <main className={styles.main}>
-      <div className={styles.description}>
-        <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>app/page.js</code>
-        </p>
-        <div>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
-              width={100}
-              height={24}
-              priority
+    <div>
+      <Header />
+      <div
+        style={{
+          backgroundImage: `url(${background.src})`,
+        }}
+        className="bg-black"
+      >
+        <div className="w-2/3 mx-auto">
+          <h1 className="flex items-center justify-center text-5xl py-32 font-bold text-white">
+            Discover the&nbsp;<span className="text-cyan-500">Power</span>
+            &nbsp;of
+            <span className="text-cyan-500">&nbsp;Data</span>
+          </h1>
+          <div className="flex flex-col text-white text-xl items-center justify-center text-center">
+            At WDL, we believe in the power of data. That's why we've curated a
+            large collection of high-quality datasets to help businesses and
+            individuals make informed decisions. Explore our datasets now and
+            discover insights that drive growth.
+          </div>
+          <div className="flex w-1/2 mx-auto py-20">
+            <input
+              id="email"
+              type="email"
+              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              placeholder="Email address"
             />
-          </a>
+            <button
+              className="flex-shrink-0 bg-cyan-500 text-sm text-white py-1 px-1 rounded"
+              type="submit"
+            >
+              Start your journey
+            </button>
+          </div>
+          <h1 className="flex items-center justify-center text-4xl text-center py-20 font-bold text-white">
+            We have exactly what you are looking for
+          </h1>
+          <div className="flex flex-col text-white text-xl items-center justify-center text-center py-10">
+            We're dedicated to providing a comprehensive collection of
+            high-quality datasets for researchers, data scientists, and
+            developers. Our goal is to make it easier for you to access the data
+            you need to train your models, perform research, or build
+            applications.
+          </div>
         </div>
       </div>
-
-      <div className={styles.center}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-        <div className={styles.thirteen}>
-          <Image src="/thirteen.svg" alt="13" width={40} height={31} priority />
-        </div>
-      </div>
-
-      <div className={styles.grid}>
-        <a
-          href="https://beta.nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={inter.className}>
-            Docs <span>-&gt;</span>
-          </h2>
-          <p className={inter.className}>
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={inter.className}>
-            Templates <span>-&gt;</span>
-          </h2>
-          <p className={inter.className}>Explore the Next.js 13 playground.</p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={inter.className}>
-            Deploy <span>-&gt;</span>
-          </h2>
-          <p className={inter.className}>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
-  )
+    </div>
+  );
 }
