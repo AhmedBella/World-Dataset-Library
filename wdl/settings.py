@@ -40,6 +40,8 @@ INSTALLED_APPS = [
     'rest_framework',
     'backend', 
     'frontend.apps.FrontendConfig',
+    'register.apps.RegisterConfig',
+    
     
 ]
 
