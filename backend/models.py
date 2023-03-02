@@ -15,3 +15,4 @@ class Dataset(models.Model):
     #this is the actual dataset file -->
     file = models.FileField()
     #the file must be limited to the accepted filetypes (like csv, json, etc..) WIP
+    #the file is also not added in the databse, but added in the project files. Further tweaking must be done
