@@ -12,3 +12,6 @@ class Dataset(models.Model):
     public = models.BooleanField(default=False)
     #the datasets are linked to a user, if the user is deleted, the dataset is also deleted. this should be changed in the future, WIP
     user = models.ForeignKey(User, on_delete=models.CASCADE)
+    #this is the actual dataset file -->
+    file = models.FileField()
+    #the file must be limited to the accepted filetypes (like csv, json, etc..) WIP
