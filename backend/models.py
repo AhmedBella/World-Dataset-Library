@@ -13,6 +13,5 @@ class Dataset(models.Model):
     #the datasets are linked to a user, if the user is deleted, the dataset is also deleted. this should be changed in the future, WIP
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     #this is the actual dataset file -->
-    file = models.FileField()
+    file = models.FileField(upload_to='uploads') #uploaded files will now be put in the uploads directory
     #the file must be limited to the accepted filetypes (like csv, json, etc..) WIP
-    #the file is also not added in the databse, but added in the project files. Further tweaking must be done
