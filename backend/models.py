@@ -15,3 +15,5 @@ class Dataset(models.Model):
     #this is the actual dataset file -->
     file = models.FileField(upload_to='uploads') #uploaded files will now be put in the uploads directory
     #the file must be limited to the accepted filetypes (like csv, json, etc..) WIP
+    creator = models.CharField(max_length=200) #organisation or person who created the dataset originally
+    license = models.CharField(max_length=200) #the license or terms of use for the data
