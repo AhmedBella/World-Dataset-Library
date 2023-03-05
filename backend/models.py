@@ -6,11 +6,11 @@ from django.utils.text import slugify
 
 #some necessary functions-->
 def upload_to_dataset(instance, filename):
-    """Generates the upload path for the dataset file"""
+    #Generates the upload path for the dataset file
     return os.path.join('uploads', 'datasets', f'{slugify(instance.name)}{os.path.splitext(filename)[1]}')
 
 def upload_to_thumbnail(instance, filename):
-    """Generates the upload path for the dataset thumbnail"""
+    #Generates the upload path for the dataset thumbnail
     return os.path.join('uploads', 'thumbnails', f'{slugify(instance.name)}{os.path.splitext(filename)[1]}')
 
 
@@ -34,7 +34,7 @@ class Dataset(models.Model):
     thumbnail = models.ImageField(upload_to=upload_to_thumbnail)
 
     def save(self, *args, **kwargs):
-        """Overrides the save method to rename the uploaded file and thumbnail"""
+        #Overrides the save method to rename the uploaded file and thumbnail#
         if self.file:
             original_filename = os.path.basename(self.file.name)
             self.file.name = upload_to_dataset(self, original_filename)
