@@ -3,6 +3,7 @@ from django.views.generic import View
 from rest_framework import generics
 from .serializers import DatasetSerializer
 from .models import Dataset
+from django.db.models import Q
 # Create your views here.
 
 class DatasetView(generics.CreateAPIView):
@@ -10,9 +11,14 @@ class DatasetView(generics.CreateAPIView):
     serializer_class = DatasetSerializer
 
 def dataset_list(request):
-    datasets = Dataset.objects.all()
+    query = request.GET.get('q') # Get the search query from the request parameters
+    if query:
+        datasets = Dataset.objects.filter(Q(name__icontains=query) | Q(description__icontains=query))
+    else:
+        datasets = Dataset.objects.all()
     context = {'datasets': datasets}
     return render(request, 'dataset_list.html', context)
+
 
 class DatasetDetailView(View):
     def get(self, request, id):
