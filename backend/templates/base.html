@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>{% block title %}{% endblock %} - Dataset Sharing Website</title>
+</head>
+<body>
+  <nav>
+    <ul>
+      <li><a href="{% url 'create_dataset' %}">create Dataset</a></li>
+    </ul>
+  </nav>
+  
+  {% block content %}{% endblock %}
+</body>
+</html>

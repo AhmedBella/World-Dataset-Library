@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>All Datasets</title>
+</head>
+<body>
+    <h1>All Datasets</h1>
+    <ul>
+        {% for dataset in datasets %}
+            <li>
+                <a href="{% url 'dataset_detail' dataset.id %}">{{ dataset.name }}</a>
+                <p>{{ dataset.description }}</p>
+                <p>Creator: {{ dataset.creator }}</p>
+                <p>License: {{ dataset.license }}</p>
+                <p>Stars: {{ dataset.stars }}</p>
+            </li>
+        {% empty %}
+            <li>No datasets available.</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
