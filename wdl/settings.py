@@ -41,8 +41,6 @@ INSTALLED_APPS = [
     'backend', 
     'frontend.apps.FrontendConfig',
     'register.apps.RegisterConfig',
-    
-    
 ]
 
 MIDDLEWARE = [

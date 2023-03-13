@@ -1,10 +1,10 @@
+import pandas as pd
 from django.shortcuts import render, get_object_or_404
 from django.views.generic import View
 from rest_framework import generics
 from .serializers import DatasetSerializer
 from .models import Dataset
 from django.db.models import Q
-# Create your views here.
 
 class DatasetView(generics.CreateAPIView):
     queryset = Dataset.objects.all()
@@ -24,8 +24,20 @@ class DatasetDetailView(View):
     def get(self, request, id):
         dataset = get_object_or_404(Dataset, id=id)
 
+        if dataset.file.name.endswith('.csv'):
+            df = pd.read_csv(dataset.file.path)
+        elif dataset.file.name.endswith('.xlsx'):
+            df = pd.read_excel(dataset.file.path)
+        elif dataset.file.name.endswith('.json'):
+            df = pd.read_json(dataset.file.path)
+        else:
+            return render(request, 'dataset_detail.html', {'error': 'Unsupported file format'})
+
         context = {
             'dataset': dataset,
+            'headers': df.columns.values,
+            'rows': df.values.tolist(),
         }
 
         return render(request, 'dataset_detail.html', context)
+    

@@ -2,7 +2,9 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>{% block title %}{% endblock %} - Dataset Sharing Website</title>
+  <title>{% block title %}{% endblock %} - World Dataset Library</title>
+  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.26/datatables.min.css"/>
+  <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.26/datatables.min.js"></script>
 </head>
 <body>
   <nav>
@@ -12,5 +14,11 @@
   </nav>
   
   {% block content %}{% endblock %}
+
+  <script>
+    $(document).ready(function() {
+      $('#dataset-table').DataTable();
+    });
+  </script>
 </body>
 </html>

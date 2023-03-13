@@ -5,30 +5,27 @@
 {% endblock %}
 
 {% block content %}
-  <h1>{{ dataset.name }}</h1>
-  
-  <p>{{ dataset.description }}</p>
-  
-  <p>Creator: {{ dataset.creator }}</p>
-  <p>License: {{ dataset.license }}</p>
-  
-  <p><strong>File contents:</strong></p>
-  <iframe class="embed-responsive-item" src="/uploads/datasets/{{ dataset.file.name }}"></iframe>
-  
-  <h2>Comments</h2>
-  {% for comment in comments %}
-    <p>{{ comment.user.username }} said:</p>
-    <p>{{ comment.text }}</p>
-    <hr>
-  {% empty %}
-    <p>No comments yet.</p>
-  {% endfor %}
-  
-  <h2>Add a comment</h2>
-  <form method="post">
-    {% csrf_token %}
-    <textarea name="text"></textarea>
-    <br>
-    <input type="submit" value="Submit">
-  </form>
+  <h2>{{ dataset.name }}</h2>
+  {% if error %}
+    <p>{{ error }}</p>
+  {% else %}
+    <table>
+      <thead>
+        <tr>
+          {% for header in headers %}
+            <th>{{ header }}</th>
+          {% endfor %}
+        </tr>
+      </thead>
+      <tbody>
+        {% for row in rows %}
+          <tr>
+            {% for col in row %}
+              <td>{{ col }}</td>
+            {% endfor %}
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  {% endif %}
 {% endblock %}
