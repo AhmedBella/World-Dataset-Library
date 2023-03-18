@@ -5,6 +5,9 @@ from rest_framework import generics
 from .serializers import DatasetSerializer
 from .models import Dataset
 from django.db.models import Q
+from django.urls import reverse_lazy
+from .forms import DatasetForm
+from django.views.generic.edit import CreateView
 
 class DatasetView(generics.CreateAPIView):
     queryset = Dataset.objects.all()
@@ -41,3 +44,12 @@ class DatasetDetailView(View):
 
         return render(request, 'dataset_detail.html', context)
     
+class DatasetCreateView(CreateView):
+    model = Dataset
+    form_class = DatasetForm
+    template_name = 'dataset_create.html'
+    success_url = reverse_lazy('dataset_list')
+
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        return super().form_valid(form)
